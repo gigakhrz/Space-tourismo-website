@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
-import logo from "../assets/shared/logo.svg";
-import burgerMenu from "../assets/shared/icon-hamburger.svg";
-import closeImg from "../assets/shared/icon-close.svg";
+import burgerMenu from "../../assets/shared/icon-hamburger.svg";
+import closeImg from "../../assets/shared/icon-close.svg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Header = (): JSX.Element => {
+const Burger = (): JSX.Element => {
   const [burger, setBurger] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -12,51 +12,41 @@ const Header = (): JSX.Element => {
   };
 
   return (
-    <HeaderContainer>
-      <img src={logo} alt="logo img" />
-      <BurgerMenu>
-        <img onClick={handleClick} src={burgerMenu} alt="burger menu" />
-        <Menu burger={burger}>
-          <img
-            className="close"
-            onClick={handleClick}
-            src={closeImg}
-            alt="Close icon"
-          />
-          <div className="menu">
-            <a>
-              <h3>00</h3>
-              <h4>Home</h4>
-            </a>
-            <a>
-              <h3>01</h3>
-              <h4>DESTINATION</h4>
-            </a>
-            <a>
-              <h3>02</h3>
-              <h4>CREW</h4>
-            </a>
-            <a>
-              <h3>03</h3>
-              <h4>TECHNOLOGY</h4>
-            </a>
-          </div>
-        </Menu>
-      </BurgerMenu>
-    </HeaderContainer>
+    <BurgerMenu>
+      <img onClick={handleClick} src={burgerMenu} alt="burger menu" />
+      <Menu burger={burger}>
+        <img
+          className="close"
+          onClick={handleClick}
+          src={closeImg}
+          alt="Close icon"
+        />
+        <div className="menu">
+          <Link to="/">
+            <h3>00</h3>
+            <h4>Home</h4>
+          </Link>
+          <Link to="../../App">
+            <h3>01</h3>
+            <h4>DESTINATION</h4>
+          </Link>
+          <Link to="../../App">
+            <h3>02</h3>
+            <h4>CREW</h4>
+          </Link>
+          <Link to="../../App">
+            <h3>03</h3>
+            <h4>TECHNOLOGY</h4>
+          </Link>
+        </div>
+      </Menu>
+    </BurgerMenu>
   );
 };
 
-export default Header;
+export default Burger;
 
-const HeaderContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const Menu = styled.div<{ burger?: boolean }>`
+const Menu = styled.div<{ burger: boolean }>`
   width: 67.7%;
   height: 100%;
   padding: 34px 27px 0 32px;
@@ -85,6 +75,7 @@ const Menu = styled.div<{ burger?: boolean }>`
       display: flex;
       align-items: start;
       gap: 11px;
+      text-decoration: none;
       h3 {
         font-family: Barlow Condensed;
         font-size: 16px;
