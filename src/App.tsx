@@ -1,10 +1,8 @@
 import { styled } from "styled-components";
-import Header from "./Components/Header/Header";
 import GlobalStyles from "./GlobalStyles";
-import image from "./assets/destination/background-destination-mobile.jpg";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Components/Home/Home";
-
+import Destination from "./Components/Destination/Destination";
 function App() {
   return (
     <Router>
@@ -12,6 +10,7 @@ function App() {
       <MainContainer>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="destinations/:planets" element={<Destination />} />
         </Routes>
       </MainContainer>
     </Router>

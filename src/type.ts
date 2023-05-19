@@ -1,4 +1,4 @@
-interface type {
+export interface Type {
   destinations: {
     name: string;
     images: {
@@ -28,4 +28,14 @@ interface type {
   }[];
 }
 
-export default type;
+// interface Type {
+//   name: string;
+//   images: {
+//     png: string;
+//     webp: string;
+//   };
+//   role: string;
+//   bio: string;
+// }
+
+// export default Type;

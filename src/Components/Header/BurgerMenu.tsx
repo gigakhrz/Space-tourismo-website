@@ -26,11 +26,12 @@ const Burger = (): JSX.Element => {
             <h3>00</h3>
             <h4>Home</h4>
           </Link>
-          <Link to="../../App">
+          <Link to="destinations/moon">
             <h3>01</h3>
             <h4>DESTINATION</h4>
           </Link>
-          <Link to="../../App">
+
+          <Link to="/">
             <h3>02</h3>
             <h4>CREW</h4>
           </Link>
