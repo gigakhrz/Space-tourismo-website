@@ -1,13 +1,10 @@
 import { styled } from "styled-components";
-import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import data from "../../data.json";
 import Header from "./Header/Header";
 import bgMobile from "../../public/assets/destination/background-destination-mobile.jpg";
 
 const Destination = (): JSX.Element => {
-  const [planet, setplanet] = useState<string>("moon");
-
   const params = useParams();
   const planetInfo = data.destinations.find(
     (item) => item.name.toLowerCase() === params.planets
@@ -15,7 +12,7 @@ const Destination = (): JSX.Element => {
 
   const imgPath = `.${planetInfo?.images.png}`;
 
-  console.log(planetInfo?.images.png);
+  const path = params.planets;
 
   return (
     <DestinationContianer>
@@ -24,41 +21,13 @@ const Destination = (): JSX.Element => {
         <h4>Pick your destination</h4>
       </HeaderDiv>
 
-      <ChoosePlanet planet={planet}>
+      <ChoosePlanet path={path}>
         <img src={imgPath} alt="planet" />
         <nav>
-          <Link
-            onClick={() => {
-              setplanet("moon");
-            }}
-            to="/destinations/moon"
-          >
-            Moon
-          </Link>
-          <Link
-            onClick={() => {
-              setplanet("mars");
-            }}
-            to="/destinations/mars"
-          >
-            Mars
-          </Link>
-          <Link
-            onClick={() => {
-              setplanet("europa");
-            }}
-            to="/destinations/europa"
-          >
-            Europa
-          </Link>
-          <Link
-            onClick={() => {
-              setplanet("titan");
-            }}
-            to="/destinations/titan"
-          >
-            Titan
-          </Link>
+          <Link to="/destinations/moon">Moon</Link>
+          <Link to="/destinations/mars">Mars</Link>
+          <Link to="/destinations/europa">Europa</Link>
+          <Link to="/destinations/titan">Titan</Link>
 
           <div className="bottomDiv"></div>
         </nav>
@@ -127,7 +96,7 @@ const HeaderDiv = styled.div`
   }
 `;
 
-const ChoosePlanet = styled.div<{ planet: string }>`
+const ChoosePlanet = styled.div<{ path: string | undefined }>`
   display: flex;
   width: 100%;
   align-items: center;
@@ -140,11 +109,11 @@ const ChoosePlanet = styled.div<{ planet: string }>`
     height: 3px;
     background-color: white;
     left: ${(props) =>
-      props.planet === "moon"
+      props.path === "moon"
         ? "-2px"
-        : props.planet === "mars"
+        : props.path === "mars"
         ? "60px"
-        : props.planet === "europa"
+        : props.path === "europa"
         ? "128px"
         : "202px"};
 
