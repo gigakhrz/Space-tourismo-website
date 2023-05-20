@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import data from "../../../data.json";
 import Header from "../Header/Header";
@@ -7,12 +7,13 @@ import bgMobile from "../../assets/destination/background-destination-mobile.jpg
 
 const Destination = (): JSX.Element => {
   const [planet, setplanet] = useState<string>("moon");
-  console.log(data);
 
   const params = useParams();
   const planetInfo = data.destinations.find(
     (item) => item.name.toLowerCase() === params.planets
   );
+
+  console.log(planetInfo?.images.png);
 
   return (
     <DestinationContianer>
@@ -22,7 +23,7 @@ const Destination = (): JSX.Element => {
       </HeaderDiv>
 
       <ChoosePlanet planet={planet}>
-        <img src={planetInfo?.images.png} alt="planet" />
+        <img src="" alt="planet" />
         <nav>
           <Link
             onClick={() => {
@@ -127,7 +128,6 @@ const ChoosePlanet = styled.div<{ planet: string }>`
   align-items: center;
   flex-direction: column;
   gap: 26px;
-  position: relative;
 
   .bottomDiv {
     position: absolute;
@@ -136,12 +136,12 @@ const ChoosePlanet = styled.div<{ planet: string }>`
     background-color: white;
     left: ${(props) =>
       props.planet === "moon"
-        ? "42px"
+        ? "-2px"
         : props.planet === "mars"
-        ? "104px"
+        ? "60px"
         : props.planet === "europa"
-        ? "172px"
-        : "246px"};
+        ? "128px"
+        : "202px"};
 
     bottom: -12px;
   }
@@ -156,6 +156,7 @@ const ChoosePlanet = styled.div<{ planet: string }>`
     gap: 27px;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     a {
       font-family: Barlow Condensed;
