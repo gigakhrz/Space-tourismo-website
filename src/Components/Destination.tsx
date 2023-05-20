@@ -42,16 +42,17 @@ const Destination = (): JSX.Element => {
       </PlanetInfo>
 
       <hr />
+      <DivCon>
+        <Container>
+          <h5>AVG. DISTANCE</h5>
+          <h2>{planetInfo?.distance}</h2>
+        </Container>
 
-      <Container>
-        <h5>AVG. DISTANCE</h5>
-        <h2>{planetInfo?.distance}</h2>
-      </Container>
-
-      <Container>
-        <h5>Est. travel time</h5>
-        <h2>{planetInfo?.travel}</h2>
-      </Container>
+        <Container>
+          <h5>Est. travel time</h5>
+          <h2>{planetInfo?.travel}</h2>
+        </Container>
+      </DivCon>
     </DestinationContianer>
   );
 };
@@ -76,6 +77,10 @@ const DestinationContianer = styled.div`
     width: 170px;
     height: 170px;
     margin-bottom: -6px;
+    @media screen and (min-width: 768px) {
+      width: 300px;
+      height: 300px;
+    }
   }
 
   hr {
@@ -106,6 +111,15 @@ const HeaderDiv = styled.div`
     letter-spacing: 2.7px;
     text-align: center;
     text-transform: uppercase;
+
+    @media screen and (min-width: 768px) {
+      align-self: flex-start;
+      margin-left: 39px;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 3.375px;
+    }
   }
   span .opacit {
     opacity: 0.25;
@@ -134,6 +148,17 @@ const ChoosePlanet = styled.nav<{ path: string | undefined }>`
         : "202px"};
 
     bottom: -12px;
+
+    @media screen and (min-width: 768px) {
+      left: ${(props) =>
+        props.path === "moon"
+          ? "-2px"
+          : props.path === "mars"
+          ? "74px"
+          : props.path === "europa"
+          ? "158px"
+          : "245px"};
+    }
   }
 
   nav {
@@ -144,6 +169,11 @@ const ChoosePlanet = styled.nav<{ path: string | undefined }>`
     justify-content: center;
     position: relative;
 
+    @media screen and (min-width: 768px) {
+      width: 285px;
+      gap: 35px;
+    }
+
     a {
       font-family: Barlow Condensed;
       font-size: 14px;
@@ -153,9 +183,10 @@ const ChoosePlanet = styled.nav<{ path: string | undefined }>`
       color: #d0d6f9;
       text-decoration: none;
       text-transform: uppercase;
-
-      :focus {
-        color: white;
+      @media screen and (min-width: 768px) {
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 2.7px;
       }
     }
   }
@@ -177,6 +208,10 @@ const PlanetInfo = styled.div`
     font-weight: 400;
     line-height: 64px;
     text-align: center;
+    @media screen and (min-width: 768px) {
+      font-size: 80px;
+      line-height: 92px;
+    }
   }
 
   p {
@@ -186,6 +221,11 @@ const PlanetInfo = styled.div`
     line-height: 25px;
     color: #d0d6f9;
     text-align: center;
+    @media screen and (min-width: 768px) {
+      max-width: 580px;
+      font-size: 16px;
+      line-height: 28px;
+    }
   }
 `;
 
@@ -196,6 +236,9 @@ const Container = styled.div`
   justify-content: center;
   width: 100%;
   gap: 12px;
+  @media screen and (min-width: 768px) {
+    width: 216px;
+  }
 
   h5 {
     font-family: Barlow Condensed;
@@ -216,5 +259,17 @@ const Container = styled.div`
     color: white;
     text-align: center;
     text-transform: uppercase;
+  }
+`;
+
+const DivCon = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    max-width: 573px;
+    gap: 11px;
   }
 `;
