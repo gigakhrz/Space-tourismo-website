@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import data from "../../../data.json";
-import Header from "../Header/Header";
-import bgMobile from "../../assets/destination/background-destination-mobile.jpg";
+import data from "../../data.json";
+import Header from "./Header/Header";
+import bgMobile from "../../public/assets/destination/background-destination-mobile.jpg";
 
 const Destination = (): JSX.Element => {
   const [planet, setplanet] = useState<string>("moon");
@@ -12,6 +12,8 @@ const Destination = (): JSX.Element => {
   const planetInfo = data.destinations.find(
     (item) => item.name.toLowerCase() === params.planets
   );
+
+  const imgPath = `.${planetInfo?.images.png}`;
 
   console.log(planetInfo?.images.png);
 
@@ -23,7 +25,7 @@ const Destination = (): JSX.Element => {
       </HeaderDiv>
 
       <ChoosePlanet planet={planet}>
-        <img src={planetInfo?.images.png} alt="planet" />
+        <img src={imgPath} alt="planet" />
         <nav>
           <Link
             onClick={() => {

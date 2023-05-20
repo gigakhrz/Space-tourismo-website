@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import burgerMenu from "../../assets/shared/icon-hamburger.svg";
-import closeImg from "../../assets/shared/icon-close.svg";
+import burgerMenu from "../../../public/assets/shared/icon-hamburger.svg";
+import closeImg from "../../../public/assets/shared/icon-close.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 

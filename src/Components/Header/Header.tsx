@@ -1,4 +1,4 @@
-import logo from "../../assets/shared/logo.svg";
+import logo from "../../../public/assets/shared/logo.svg";
 import { styled } from "styled-components";
 import Burger from "./BurgerMenu";
 import { Link } from "react-router-dom";
