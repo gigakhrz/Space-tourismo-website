@@ -33,6 +33,9 @@ const HomeContainer = styled.div`
   background-image: url(${homeBgMobile});
   background-repeat: no-repeat;
   background-size: cover;
+  @media screen and (min-width: 768px) {
+    padding: 0;
+  }
 
   .description {
     display: flex;

@@ -101,4 +101,7 @@ const Menu = styled.div<{ burger: boolean }>`
 
 const BurgerMenu = styled.div`
   width: 24px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;

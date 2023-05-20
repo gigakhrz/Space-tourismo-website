@@ -23,7 +23,7 @@ const Destination = (): JSX.Element => {
       </HeaderDiv>
 
       <ChoosePlanet planet={planet}>
-        <img src="" alt="planet" />
+        <img src={planetInfo?.images.png} alt="planet" />
         <nav>
           <Link
             onClick={() => {
@@ -94,6 +94,9 @@ const DestinationContianer = styled.div`
   background-size: cover;
   min-height: 100vh;
   padding: 24px 24px 57px;
+  @media screen and (min-width: 768px) {
+    padding: 0;
+  }
 
   hr {
     background: #383b4b;
