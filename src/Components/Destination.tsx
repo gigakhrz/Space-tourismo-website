@@ -71,6 +71,10 @@ const DestinationContianer = styled.div`
   padding: 24px 24px 57px;
   @media screen and (min-width: 768px) {
     padding: 0;
+    gap: 50px;
+  }
+  @media screen and (min-width: 1024px) {
+    padding: 40px 0 0 55px;
   }
 
   .planetImg {
@@ -97,6 +101,11 @@ const HeaderDiv = styled.div`
   flex-direction: column;
   gap: 24px;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+    gap: 40px;
+    margin-bottom: 10px;
+  }
 
   span {
     display: flex;
@@ -199,6 +208,9 @@ const PlanetInfo = styled.div`
   justify-content: center;
   width: 100%;
   gap: 1px;
+  @media screen and (min-width: 768px) {
+    gap: 8px;
+  }
 
   h1 {
     color: white;
@@ -271,5 +283,6 @@ const DivCon = styled.div`
     flex-direction: row;
     max-width: 573px;
     gap: 11px;
+    margin-bottom: 62px;
   }
 `;

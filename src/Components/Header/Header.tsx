@@ -8,12 +8,12 @@ const Header = (): JSX.Element => {
     <HeaderContainer>
       <img src={logo} alt="logo img" />
       <Burger />
-
       <NavBar>
         <Link to="">Home</Link>
         <Link to="">Destination</Link>
         <Link to="">Crew</Link>
         <Link to="">Technology</Link>
+        <hr />
       </NavBar>
     </HeaderContainer>
   );
@@ -29,6 +29,9 @@ const HeaderContainer = styled.div`
     @media screen and (min-width: 768px) {
       margin: 24px 0 0 39px;
     }
+    @media screen and (min-width: 1024px) {
+      margin: 0;
+    }
   }
 `;
 
@@ -43,8 +46,31 @@ const NavBar = styled.div`
   backdrop-filter: blur(40.7742px);
   aspect-ratio: 1.7;
   display: none;
+
+  hr {
+    width: 473px;
+    height: 1px;
+    border: none;
+    position: absolute;
+
+    background: #ffffff;
+    mix-blend-mode: normal;
+    opacity: 0.25;
+    display: none;
+
+    @media screen and (min-width: 1440px) {
+      display: block;
+      right: 800px;
+    }
+  }
+
   @media screen and (min-width: 768px) {
     display: flex;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 830px;
+    position: relative;
   }
 
   a {
@@ -57,6 +83,11 @@ const NavBar = styled.div`
     letter-spacing: 2.36px;
     text-align: left;
     color: white;
+    @media screen and (min-width: 1024px) {
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 2.7px;
+    }
   }
 `;
 
