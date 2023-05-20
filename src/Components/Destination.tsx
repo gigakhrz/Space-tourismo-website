@@ -10,7 +10,7 @@ const Destination = (): JSX.Element => {
     (item) => item.name.toLowerCase() === params.planets
   );
 
-  const imgPath = `.${planetInfo?.images.png}`;
+  const imgPath = `.${planetInfo?.images.webp}`;
 
   const path = params.planets;
 
@@ -18,11 +18,14 @@ const Destination = (): JSX.Element => {
     <DestinationContianer>
       <HeaderDiv>
         <Header />
-        <h4>Pick your destination</h4>
+        <span>
+          <h4 className="opacit">01</h4>
+          <h4>Pick your destination</h4>
+        </span>
       </HeaderDiv>
 
+      <img className="planetImg" src={imgPath} alt="planet" />
       <ChoosePlanet path={path}>
-        <img src={imgPath} alt="planet" />
         <nav>
           <Link to="/destinations/moon">Moon</Link>
           <Link to="/destinations/mars">Mars</Link>
@@ -69,6 +72,12 @@ const DestinationContianer = styled.div`
     padding: 0;
   }
 
+  .planetImg {
+    width: 170px;
+    height: 170px;
+    margin-bottom: -6px;
+  }
+
   hr {
     background: #383b4b;
     width: 100%;
@@ -84,7 +93,11 @@ const HeaderDiv = styled.div`
   gap: 24px;
   align-items: center;
 
-  h4 {
+  span {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
     color: white;
     font-family: Barlow Condensed;
     font-size: 16px;
@@ -94,9 +107,12 @@ const HeaderDiv = styled.div`
     text-align: center;
     text-transform: uppercase;
   }
+  span .opacit {
+    opacity: 0.25;
+  }
 `;
 
-const ChoosePlanet = styled.div<{ path: string | undefined }>`
+const ChoosePlanet = styled.nav<{ path: string | undefined }>`
   display: flex;
   width: 100%;
   align-items: center;
@@ -120,10 +136,6 @@ const ChoosePlanet = styled.div<{ path: string | undefined }>`
     bottom: -12px;
   }
 
-  img {
-    width: 170px;
-    height: 170px;
-  }
   nav {
     width: 240px;
     display: flex;
