@@ -14,8 +14,6 @@ const Destination = (): JSX.Element => {
 
   const imgPath = `.${planetInfo?.images.webp}`;
 
-  const path = params.planets;
-
   return (
     <DestinationContianer>
       <HeaderDiv>
