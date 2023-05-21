@@ -67,7 +67,7 @@ const DestinationContianer = styled.div`
   flex-direction: column;
   gap: 32px;
   align-items: center;
-  background-image: url(${bgTablet});
+  background-image: url(${bgMobile});
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
