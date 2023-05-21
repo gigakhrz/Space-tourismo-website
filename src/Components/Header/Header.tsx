@@ -32,7 +32,7 @@ const Header = (): JSX.Element => {
           <div className="hoverDiv"></div>
           <div className="bottomDiv"></div>
         </Link>
-        <Link className="crew" to="">
+        <Link className="crew" to="/crew/douglas">
           <h4>02</h4> Crew
           <div className="hoverDiv"></div>
           <div className="bottomDiv"></div>

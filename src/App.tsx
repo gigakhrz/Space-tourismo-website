@@ -3,6 +3,7 @@ import GlobalStyles from "./GlobalStyles";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Destination from "./Components/Destination";
+import Crew from "./Components/Crew/Crew";
 function App() {
   return (
     <Router>
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="destinations/:planets" element={<Destination />} />
+          <Route path="crew/:person" element={<Crew />} />
         </Routes>
       </MainContainer>
     </Router>
