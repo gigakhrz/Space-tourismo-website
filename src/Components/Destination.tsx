@@ -27,12 +27,20 @@ const Destination = (): JSX.Element => {
       </HeaderDiv>
       <div className="planetInfoContainer">
         <img className="planetImg" src={imgPath} alt="planet" />
-        <ChoosePlanet path={path}>
+        <ChoosePlanet>
           <nav>
-            <Link to="/destinations/moon">Moon</Link>
-            <Link to="/destinations/mars">Mars</Link>
-            <Link to="/destinations/europa">Europa</Link>
-            <Link to="/destinations/titan">Titan</Link>
+            <Link to="/destinations/moon">
+              Moon <div className="hoverDiv"></div>
+            </Link>
+            <Link to="/destinations/mars">
+              Mars <div className="hoverDiv"></div>
+            </Link>
+            <Link to="/destinations/europa">
+              Europa <div className="hoverDiv"></div>
+            </Link>
+            <Link to="/destinations/titan">
+              Titan <div className="hoverDiv"></div>
+            </Link>
 
             <div className="bottomDiv"></div>
           </nav>
@@ -163,7 +171,7 @@ const HeaderDiv = styled.div`
   }
 `;
 
-const ChoosePlanet = styled.nav<{ path: string | undefined }>`
+const ChoosePlanet = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
@@ -178,40 +186,11 @@ const ChoosePlanet = styled.nav<{ path: string | undefined }>`
     gap: 53px;
   }
 
-  .bottomDiv {
-    position: absolute;
-    width: 36px;
-    height: 3px;
-    background-color: white;
-    left: ${(props) =>
-      props.path === "moon"
-        ? "-2px"
-        : props.path === "mars"
-        ? "60px"
-        : props.path === "europa"
-        ? "128px"
-        : "202px"};
-
-    bottom: -12px;
-
-    @media screen and (min-width: 768px) {
-      left: ${(props) =>
-        props.path === "moon"
-          ? "-2px"
-          : props.path === "mars"
-          ? "74px"
-          : props.path === "europa"
-          ? "158px"
-          : "245px"};
-    }
-  }
-
   nav {
     width: 240px;
     display: flex;
     gap: 27px;
     align-items: center;
-    justify-content: center;
     position: relative;
 
     @media screen and (min-width: 768px) {
@@ -233,6 +212,37 @@ const ChoosePlanet = styled.nav<{ path: string | undefined }>`
         line-height: 19px;
         letter-spacing: 2.7px;
       }
+      @media screen and (min-width: 1024px) {
+        position: relative;
+      }
+    }
+
+    //div which appear on hover and on focus
+    .hoverDiv {
+      height: 3px;
+      display: none;
+      background-color: white;
+      @media screen and (min-width: 1024px) {
+        position: absolute;
+        bottom: -12px;
+        width: 0; /* Initially set to 0 */
+        transition: width 0.3s ease; /* Add transition for smooth animation */
+      }
+    }
+
+    //
+    a {
+      position: relative;
+      cursor: pointer;
+    }
+    a:focus .hoverDiv {
+      width: 100%;
+      display: block;
+    }
+    a:hover .hoverDiv {
+      width: 100%;
+      display: block;
+      opacity: 0.5;
     }
   }
 
