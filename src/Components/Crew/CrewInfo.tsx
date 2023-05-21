@@ -146,7 +146,7 @@ const NavBar = styled.nav<{ person: string }>`
     background-color: white;
     border-radius: 50%;
   }
-
+  // indicates which one is selected,the selected one has opacity 0.5s
   .douglas {
     opacity: ${(props) => (props.person === "douglas" ? "0.5" : "")};
   }

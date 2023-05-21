@@ -148,7 +148,6 @@ const HomeContainer = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    position: relative;
 
     color: #0b0d17;
     font-family: Bellefair;
@@ -171,6 +170,7 @@ const HomeContainer = styled.div`
       align-self: flex-end;
       width: 274px;
       height: 274px;
+      position: relative;
     }
 
     .hover {
