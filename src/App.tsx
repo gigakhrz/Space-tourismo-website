@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import GlobalStyles from "./GlobalStyles";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Destination from "./Components/Destination";
 function App() {
