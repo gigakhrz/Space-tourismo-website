@@ -1,12 +1,13 @@
 import logo from "../../../public/assets/shared/logo.svg";
 import { styled } from "styled-components";
 import Burger from "./BurgerMenu";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Header = (): JSX.Element => {
   const [pickPage, setPickPage] = useState<string>("home");
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const path = location.pathname;
@@ -15,11 +16,13 @@ const Header = (): JSX.Element => {
     setPickPage(currentPage);
   }, [location]);
 
-  // Function to handle link clicks and update the selected page
+  const handleLogoClick = () => {
+    navigate("/"); // Redirect to the home page
+  };
 
   return (
     <HeaderContainer>
-      <img src={logo} alt="logo img" />
+      <img src={logo} alt="logo img" onClick={handleLogoClick} />
       <Burger />
       <NavBar pickpage={pickPage}>
         <Link className="home" to="/">
@@ -59,6 +62,7 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 
   img {
     @media screen and (min-width: 768px) {
