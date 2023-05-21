@@ -4,45 +4,24 @@ import Burger from "./BurgerMenu";
 import { Link } from "react-router-dom";
 
 const Header = (): JSX.Element => {
-  // Function to handle link clicks and update the selected page
-  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault(); // Prevents the default link behavior (page refresh)
-  };
-
   return (
     <HeaderContainer>
       <img src={logo} alt="logo img" />
       <Burger />
       <NavBar>
-        <Link
-          className="home"
-          to="/"
-          onClick={(event) => handleLinkClick(event)}
-        >
+        <Link className="home" to="/">
           <h4>00</h4> Home
           <div className="hoverDiv"></div>
         </Link>
-        <Link
-          className="destination"
-          to="/destinations/moon"
-          onClick={(event) => handleLinkClick(event)}
-        >
+        <Link className="destination" to="/destinations/moon">
           <h4>01</h4> Destination
           <div className="hoverDiv"></div>
         </Link>
-        <Link
-          className="crew"
-          to=""
-          onClick={(event) => handleLinkClick(event)}
-        >
+        <Link className="crew" to="">
           <h4>02</h4> Crew
           <div className="hoverDiv"></div>
         </Link>
-        <Link
-          to=""
-          className="technology"
-          onClick={(event) => handleLinkClick(event)}
-        >
+        <Link to="" className="technology">
           <h4>03</h4>Technology
           <div className="hoverDiv"></div>
         </Link>
