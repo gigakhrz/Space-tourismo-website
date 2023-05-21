@@ -1,8 +1,16 @@
 import { styled } from "styled-components";
 import Header from "../Header/Header";
 import bgMobile from "../../../public/assets/crew/background-crew-mobile.jpg";
+import CrewInfo from "./CrewInfo";
+import { useParams } from "react-router-dom";
+import data from "../../../data.json";
 
 const Crew = (): JSX.Element => {
+  const params = useParams();
+  const personInfo = data.crew.find(
+    (item) => item.name.split(" ")[0].toLowerCase() === params.person
+  );
+  console.log(personInfo);
   return (
     <CrewContainer>
       <HeaderDiv>
@@ -12,12 +20,19 @@ const Crew = (): JSX.Element => {
           <h4>Meet your crew</h4>
         </span>
       </HeaderDiv>
+      <CrewInfo
+        name={personInfo?.name}
+        photo={personInfo?.images.webp}
+        role={personInfo?.role}
+        bio={personInfo?.bio}
+      />
     </CrewContainer>
   );
 };
 export default Crew;
 
 const CrewContainer = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -30,7 +45,9 @@ const CrewContainer = styled.div`
 `;
 
 const HeaderDiv = styled.div`
+  width: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 24px;
 
