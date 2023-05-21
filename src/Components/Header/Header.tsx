@@ -2,31 +2,22 @@ import logo from "../../../public/assets/shared/logo.svg";
 import { styled } from "styled-components";
 import Burger from "./BurgerMenu";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Header = (): JSX.Element => {
-  const [pickPage, setPickPage] = useState<string>("home");
-
-  console.log(pickPage);
-
   // Function to handle link clicks and update the selected page
-  const handleLinkClick = (
-    page: string,
-    event: React.MouseEvent<HTMLAnchorElement>
-  ) => {
+  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault(); // Prevents the default link behavior (page refresh)
-    setPickPage(page);
   };
 
   return (
     <HeaderContainer>
       <img src={logo} alt="logo img" />
       <Burger />
-      <NavBar pickPage={pickPage}>
+      <NavBar>
         <Link
           className="home"
           to="/"
-          onClick={(event) => handleLinkClick("home", event)}
+          onClick={(event) => handleLinkClick(event)}
         >
           <h4>00</h4> Home
           <div className="hoverDiv"></div>
@@ -34,7 +25,7 @@ const Header = (): JSX.Element => {
         <Link
           className="destination"
           to="/destinations/moon"
-          onClick={(event) => handleLinkClick("destination", event)}
+          onClick={(event) => handleLinkClick(event)}
         >
           <h4>01</h4> Destination
           <div className="hoverDiv"></div>
@@ -42,7 +33,7 @@ const Header = (): JSX.Element => {
         <Link
           className="crew"
           to=""
-          onClick={(event) => handleLinkClick("crew", event)}
+          onClick={(event) => handleLinkClick(event)}
         >
           <h4>02</h4> Crew
           <div className="hoverDiv"></div>
@@ -50,7 +41,7 @@ const Header = (): JSX.Element => {
         <Link
           to=""
           className="technology"
-          onClick={(event) => handleLinkClick("technology", event)}
+          onClick={(event) => handleLinkClick(event)}
         >
           <h4>03</h4>Technology
           <div className="hoverDiv"></div>
@@ -86,7 +77,7 @@ const HeaderContainer = styled.div`
 `;
 
 // Styled component for the navigation bar
-const NavBar = styled.div<{ pickPage: string }>`
+const NavBar = styled.div`
   padding: 40px 48px;
   display: flex;
   align-items: center;
@@ -121,32 +112,6 @@ const NavBar = styled.div<{ pickPage: string }>`
   }
 
   // Colored bottom bar indicating the selected page
-  .bottomDiv {
-    height: 3px;
-    display: none;
-    background-color: white;
-    @media screen and (min-width: 1024px) {
-      display: block;
-      position: absolute;
-      bottom: 0;
-      width: ${(props) =>
-        props.pickPage === "home"
-          ? "70px"
-          : props.pickPage === "destination"
-          ? "127px"
-          : props.pickPage === "crew"
-          ? "71px"
-          : "127px"};
-      left: ${(props) =>
-        props.pickPage === "home"
-          ? "123px"
-          : props.pickPage === "destination"
-          ? "244px"
-          : props.pickPage === "crew"
-          ? "419px"
-          : "538px"};
-    }
-  }
 
   //on hover indicating hovered tag
 
@@ -154,7 +119,6 @@ const NavBar = styled.div<{ pickPage: string }>`
     height: 5px;
     display: none;
     background-color: white;
-    opacity: 0.5;
     @media screen and (min-width: 1024px) {
       position: absolute;
       bottom: -40px;
@@ -169,6 +133,12 @@ const NavBar = styled.div<{ pickPage: string }>`
     cursor: pointer;
   }
   a:hover .hoverDiv {
+    width: 100%;
+    display: block;
+    opacity: 0.5;
+  }
+
+  a:focus .hoverDiv {
     width: 100%;
     display: block;
   }
