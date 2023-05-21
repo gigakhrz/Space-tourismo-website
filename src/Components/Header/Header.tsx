@@ -1,32 +1,47 @@
 import logo from "../../../public/assets/shared/logo.svg";
 import { styled } from "styled-components";
 import Burger from "./BurgerMenu";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Header = (): JSX.Element => {
+  const [pickPage, setPickPage] = useState<string>("home");
+  const location = useLocation();
+
+  useEffect(() => {
+    const path = location.pathname;
+    const currentPage = path.split("/")[1]; // Extract the page name from the URL path
+
+    setPickPage(currentPage);
+  }, [location]);
+
+  // Function to handle link clicks and update the selected page
+
   return (
     <HeaderContainer>
       <img src={logo} alt="logo img" />
       <Burger />
-      <NavBar>
+      <NavBar pickpage={pickPage}>
         <Link className="home" to="/">
           <h4>00</h4> Home
           <div className="hoverDiv"></div>
+          <div className="bottomDiv"></div>
         </Link>
         <Link className="destination" to="/destinations/moon">
           <h4>01</h4> Destination
           <div className="hoverDiv"></div>
+          <div className="bottomDiv"></div>
         </Link>
         <Link className="crew" to="">
           <h4>02</h4> Crew
           <div className="hoverDiv"></div>
+          <div className="bottomDiv"></div>
         </Link>
         <Link to="" className="technology">
           <h4>03</h4>Technology
           <div className="hoverDiv"></div>
+          <div className="bottomDiv"></div>
         </Link>
-
-        <div className="bottomDiv"></div>
 
         <hr />
       </NavBar>
@@ -56,7 +71,7 @@ const HeaderContainer = styled.div`
 `;
 
 // Styled component for the navigation bar
-const NavBar = styled.div`
+const NavBar = styled.div<{ pickpage: string }>`
   padding: 40px 48px;
   display: flex;
   align-items: center;
@@ -91,6 +106,34 @@ const NavBar = styled.div`
   }
 
   // Colored bottom bar indicating the selected page
+  .bottomDiv {
+    height: 3px;
+    display: none;
+    background-color: white;
+    @media screen and (min-width: 1024px) {
+      display: block;
+      position: absolute;
+      bottom: -40px;
+      width: 100%;
+    }
+  }
+
+  .home .bottomDiv {
+    display: ${(props) => (props.pickpage === "" ? "block" : "none")};
+  }
+
+  .destination .bottomDiv {
+    display: ${(props) =>
+      props.pickpage === "destinations" ? "block" : "none"};
+  }
+
+  .crew .bottomDiv {
+    display: ${(props) => (props.pickpage === "crew" ? "block" : "none")};
+  }
+
+  .technology .bottomDiv {
+    display: ${(props) => (props.pickpage === "technology" ? "block" : "none")};
+  }
 
   //on hover indicating hovered tag
 
@@ -115,11 +158,6 @@ const NavBar = styled.div`
     width: 100%;
     display: block;
     opacity: 0.5;
-  }
-
-  a:focus .hoverDiv {
-    width: 100%;
-    display: block;
   }
 
   @media screen and (min-width: 768px) {
