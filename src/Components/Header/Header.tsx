@@ -9,10 +9,18 @@ const Header = (): JSX.Element => {
       <img src={logo} alt="logo img" />
       <Burger />
       <NavBar>
-        <Link to="">Home</Link>
-        <Link to="">Destination</Link>
-        <Link to="">Crew</Link>
-        <Link to="">Technology</Link>
+        <Link to="">
+          <h4>00</h4> Home
+        </Link>
+        <Link to="">
+          <h4>01</h4> Destination
+        </Link>
+        <Link to="">
+          <h4>02</h4> Crew
+        </Link>
+        <Link to="">
+          <h4>03</h4>Technology
+        </Link>
         <hr />
       </NavBar>
     </HeaderContainer>
@@ -46,6 +54,12 @@ const NavBar = styled.div`
   backdrop-filter: blur(40.7742px);
   aspect-ratio: 1.7;
   display: none;
+  @media screen and (min-width: 1024px) {
+    width: 830px;
+    position: relative;
+    padding: 38px 0 38px 123px;
+    gap: 50px;
+  }
 
   hr {
     width: 473px;
@@ -68,11 +82,6 @@ const NavBar = styled.div`
     display: flex;
   }
 
-  @media screen and (min-width: 1024px) {
-    width: 830px;
-    position: relative;
-  }
-
   a {
     text-decoration: none;
     text-transform: uppercase;
@@ -83,10 +92,21 @@ const NavBar = styled.div`
     letter-spacing: 2.36px;
     text-align: left;
     color: white;
+
+    h4 {
+      display: none;
+    }
     @media screen and (min-width: 1024px) {
       font-size: 16px;
       line-height: 19px;
       letter-spacing: 2.7px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      h4 {
+        display: block;
+      }
     }
   }
 `;
