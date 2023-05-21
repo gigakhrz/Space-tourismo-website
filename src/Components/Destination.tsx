@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import data from "../../data.json";
 import Header from "./Header/Header";
 import bgMobile from "../../public/assets/destination/background-destination-mobile.jpg";
+import bgTablet from "../../public/assets/destination/background-destination-tablet.jpg";
+import bgDesktop from "../../public/assets/destination/background-destination-desktop.jpg";
 
 const Destination = (): JSX.Element => {
   const params = useParams();
@@ -23,36 +25,37 @@ const Destination = (): JSX.Element => {
           <h4>Pick your destination</h4>
         </span>
       </HeaderDiv>
+      <div className="planetInfoContainer">
+        <img className="planetImg" src={imgPath} alt="planet" />
+        <ChoosePlanet path={path}>
+          <nav>
+            <Link to="/destinations/moon">Moon</Link>
+            <Link to="/destinations/mars">Mars</Link>
+            <Link to="/destinations/europa">Europa</Link>
+            <Link to="/destinations/titan">Titan</Link>
 
-      <img className="planetImg" src={imgPath} alt="planet" />
-      <ChoosePlanet path={path}>
-        <nav>
-          <Link to="/destinations/moon">Moon</Link>
-          <Link to="/destinations/mars">Mars</Link>
-          <Link to="/destinations/europa">Europa</Link>
-          <Link to="/destinations/titan">Titan</Link>
+            <div className="bottomDiv"></div>
+          </nav>
 
-          <div className="bottomDiv"></div>
-        </nav>
-      </ChoosePlanet>
+          <PlanetInfo>
+            <h1>{planetInfo?.name}</h1>
+            <p>{planetInfo?.description}</p>
+          </PlanetInfo>
 
-      <PlanetInfo>
-        <h1>{planetInfo?.name}</h1>
-        <p>{planetInfo?.description}</p>
-      </PlanetInfo>
+          <hr />
+          <DivCon>
+            <Container>
+              <h5>AVG. DISTANCE</h5>
+              <h2>{planetInfo?.distance}</h2>
+            </Container>
 
-      <hr />
-      <DivCon>
-        <Container>
-          <h5>AVG. DISTANCE</h5>
-          <h2>{planetInfo?.distance}</h2>
-        </Container>
-
-        <Container>
-          <h5>Est. travel time</h5>
-          <h2>{planetInfo?.travel}</h2>
-        </Container>
-      </DivCon>
+            <Container>
+              <h5>Est. travel time</h5>
+              <h2>{planetInfo?.travel}</h2>
+            </Container>
+          </DivCon>
+        </ChoosePlanet>
+      </div>
     </DestinationContianer>
   );
 };
@@ -64,7 +67,7 @@ const DestinationContianer = styled.div`
   flex-direction: column;
   gap: 32px;
   align-items: center;
-  background-image: url(${bgMobile});
+  background-image: url(${bgTablet});
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
@@ -72,9 +75,12 @@ const DestinationContianer = styled.div`
   @media screen and (min-width: 768px) {
     padding: 0;
     gap: 50px;
+    background-image: url(${bgTablet});
   }
   @media screen and (min-width: 1024px) {
     padding: 40px 0 0 55px;
+    gap: 64px;
+    background-image: url(${bgDesktop});
   }
 
   .planetImg {
@@ -85,13 +91,28 @@ const DestinationContianer = styled.div`
       width: 300px;
       height: 300px;
     }
+    @media screen and (min-width: 1024px) {
+      width: 445px;
+      height: 445px;
+    }
   }
 
-  hr {
-    background: #383b4b;
-    width: 100%;
-    height: 1px;
-    border: none;
+  .planetInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+    @media screen and (min-width: 768px) {
+      gap: 53px;
+    }
+    @media screen and (min-width: 1024px) {
+      flex-direction: row;
+      gap: 70px;
+    }
+    @media screen and (min-width: 1440px) {
+      flex-direction: row;
+      gap: 157.5px;
+    }
   }
 `;
 
@@ -105,6 +126,9 @@ const HeaderDiv = styled.div`
   @media screen and (min-width: 768px) {
     gap: 40px;
     margin-bottom: 10px;
+  }
+  @media screen and (min-width: 1024px) {
+    gap: 76px;
   }
 
   span {
@@ -129,6 +153,10 @@ const HeaderDiv = styled.div`
       line-height: 24px;
       letter-spacing: 3.375px;
     }
+
+    @media screen and (min-width: 1024px) {
+      margin-left: 126.5px;
+    }
   }
   span .opacit {
     opacity: 0.25;
@@ -140,7 +168,15 @@ const ChoosePlanet = styled.nav<{ path: string | undefined }>`
   width: 100%;
   align-items: center;
   flex-direction: column;
-  gap: 26px;
+  gap: 32px;
+  @media screen and (min-width: 768px) {
+    gap: 48px;
+  }
+  @media screen and (min-width: 1024px) {
+    max-width: 445px;
+    align-items: flex-start;
+    gap: 53px;
+  }
 
   .bottomDiv {
     position: absolute;
@@ -199,6 +235,20 @@ const ChoosePlanet = styled.nav<{ path: string | undefined }>`
       }
     }
   }
+
+  hr {
+    background: #383b4b;
+    width: 100%;
+    height: 1px;
+    border: none;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: -20px;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-bottom: -28px;
+    }
+  }
 `;
 
 const PlanetInfo = styled.div`
@@ -210,6 +260,9 @@ const PlanetInfo = styled.div`
   gap: 1px;
   @media screen and (min-width: 768px) {
     gap: 8px;
+  }
+  @media screen and (min-width: 1024px) {
+    align-items: flex-start;
   }
 
   h1 {
@@ -223,6 +276,10 @@ const PlanetInfo = styled.div`
     @media screen and (min-width: 768px) {
       font-size: 80px;
       line-height: 92px;
+    }
+    @media screen and (min-width: 1024px) {
+      font-size: 100px;
+      line-height: 114.5px;
     }
   }
 
@@ -238,6 +295,9 @@ const PlanetInfo = styled.div`
       font-size: 16px;
       line-height: 28px;
     }
+    @media screen and (min-width: 1024px) {
+      text-align: left;
+    }
   }
 `;
 
@@ -250,6 +310,9 @@ const Container = styled.div`
   gap: 12px;
   @media screen and (min-width: 768px) {
     width: 216px;
+  }
+  @media screen and (min-width: 1024px) {
+    align-items: flex-start;
   }
 
   h5 {

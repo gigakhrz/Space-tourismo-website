@@ -9,10 +9,10 @@ const Header = (): JSX.Element => {
       <img src={logo} alt="logo img" />
       <Burger />
       <NavBar>
-        <Link to="">
+        <Link to="/">
           <h4>00</h4> Home
         </Link>
-        <Link to="">
+        <Link to="/destinations/moon">
           <h4>01</h4> Destination
         </Link>
         <Link to="">
