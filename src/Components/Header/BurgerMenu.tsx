@@ -35,7 +35,7 @@ const Burger = (): JSX.Element => {
             <h3>02</h3>
             <h4>CREW</h4>
           </Link>
-          <Link to="../../App">
+          <Link to="/technology/vehicle">
             <h3>03</h3>
             <h4>TECHNOLOGY</h4>
           </Link>
