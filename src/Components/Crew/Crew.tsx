@@ -62,10 +62,10 @@ const HeaderDiv = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 24px;
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 768px) {
     gap: 40px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1024px) {
     gap: 76px;
   }
 
