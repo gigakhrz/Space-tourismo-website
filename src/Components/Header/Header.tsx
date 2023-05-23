@@ -114,7 +114,7 @@ const NavBar = styled.div<{ pickpage: string }>`
     height: 3px;
     display: none;
     background-color: white;
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 768px) {
       display: block;
       position: absolute;
       bottom: -40px;
