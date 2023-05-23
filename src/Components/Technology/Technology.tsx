@@ -5,8 +5,28 @@ import bgTablet from "../../../public/assets/technology/background-technology-ta
 import bgDesktop from "../../../public/assets/technology/background-technology-desktop.jpg";
 import { useParams } from "react-router-dom";
 import data from "../../../data.json";
+import TechnologyInfo from "./TechnologyInfo";
+
+interface type {
+  name?: string;
+  images?: {
+    portrait?: string;
+    landscape?: string;
+  };
+  description?: string;
+}
+
+let personInfo: type | undefined;
 
 const Technology = (): JSX.Element => {
+  const params = useParams();
+  if (params.tech === "vehicle") {
+    personInfo = data.technology.find((item) => item.name === "Launch vehicle");
+  } else if (params.tech === "spaceport") {
+    personInfo = data.technology.find((item) => item.name === "Spaceport");
+  } else if (params.tech === "capsule") {
+    personInfo = data.technology.find((item) => item.name === "Space capsule");
+  }
   return (
     <TechnologyCont>
       <HeaderDiv>
@@ -16,6 +36,11 @@ const Technology = (): JSX.Element => {
           <h4>SPACE LAUNCH 101</h4>
         </span>
       </HeaderDiv>
+      <TechnologyInfo
+        name={personInfo?.name}
+        photo={personInfo?.images?.landscape}
+        description={personInfo?.description}
+      />
     </TechnologyCont>
   );
 };
@@ -31,7 +56,7 @@ const TechnologyCont = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  padding: 24px 24px 104px;
+  padding-bottom: 56.33px;
 `;
 
 const HeaderDiv = styled.div`
@@ -40,6 +65,7 @@ const HeaderDiv = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 24px;
+  padding: 24px 24px 0;
   @media screen and (min-width: 1024px) {
     gap: 40px;
   }
