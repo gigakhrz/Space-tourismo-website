@@ -155,13 +155,15 @@ const HeaderDiv = styled.div`
       align-self: flex-start;
       margin-left: 39px;
       font-size: 20px;
-      font-weight: 400;
       line-height: 24px;
       letter-spacing: 3.375px;
     }
 
     @media screen and (min-width: 1024px) {
       margin-left: 126.5px;
+      font-size: 28px;
+      line-height: 33.6px;
+      letter-spacing: 4.72px;
     }
   }
   span .opacit {
