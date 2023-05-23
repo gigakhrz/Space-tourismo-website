@@ -232,7 +232,7 @@ const NavBar = styled.nav<{ person: string }>`
   }
 
   a:hover {
-    opacity: 0.5;
+    opacity: 0.51;
   }
 
   // indicates which one is selected,the selected one has opacity 0.5s
