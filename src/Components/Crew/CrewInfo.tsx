@@ -231,20 +231,24 @@ const NavBar = styled.nav<{ person: string }>`
     }
   }
 
+  a:hover {
+    opacity: 0.5;
+  }
+
   // indicates which one is selected,the selected one has opacity 0.5s
   .douglas {
-    opacity: ${(props) => (props.person === "douglas" ? "0.5" : "")};
+    opacity: ${(props) => (props.person === "douglas" ? "" : "0.17")};
   }
 
   .mark {
-    opacity: ${(props) => (props.person === "mark" ? "0.5" : "")};
+    opacity: ${(props) => (props.person === "mark" ? "" : "0.17")};
   }
 
   .victor {
-    opacity: ${(props) => (props.person === "victor" ? "0.5" : "")};
+    opacity: ${(props) => (props.person === "victor" ? "" : "0.17")};
   }
 
   .anousheh {
-    opacity: ${(props) => (props.person === "anousheh" ? "0.5" : "")};
+    opacity: ${(props) => (props.person === "anousheh" ? "" : "0.17")};
   }
 `;
