@@ -56,12 +56,23 @@ const Container = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: column-reverse;
   }
+  @media screen and (min-width: 1024px) {
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 82px;
+  }
+  @media screen and (min-width: 1440px) {
+    justify-content: space-around;
+  }
 
   .imgContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media screen and (min-width: 1024px) {
+      max-width: 548px;
+    }
 
     img {
       width: 177px;
@@ -70,6 +81,11 @@ const Container = styled.div`
       @media screen and (min-width: 768px) {
         width: 436.37px;
         height: 542px;
+      }
+      @media screen and (min-width: 1200px) {
+        width: 548px;
+        height: 712px;
+        margin-top: -33.6px;
       }
     }
 
@@ -94,6 +110,9 @@ const InfoContainer = styled.div<{ person: string }>`
   @media screen and (min-width: 768px) {
     gap: 40px;
   }
+  @media screen and (min-width: 1024px) {
+    gap: 120px;
+  }
 
   .personDescription {
     display: flex;
@@ -104,6 +123,10 @@ const InfoContainer = styled.div<{ person: string }>`
     @media screen and (min-width: 768px) {
       order: 1;
     }
+    @media screen and (min-width: 1024px) {
+      align-items: flex-start;
+      gap: 27px;
+    }
 
     //role and full name
     .personInfo {
@@ -111,6 +134,10 @@ const InfoContainer = styled.div<{ person: string }>`
       flex-direction: column;
       align-items: center;
       gap: 8px;
+      @media screen and (min-width: 1024px) {
+        gap: 15px;
+        align-items: flex-start;
+      }
 
       h5 {
         font-family: Bellefair;
@@ -125,6 +152,10 @@ const InfoContainer = styled.div<{ person: string }>`
           font-size: 24px;
           line-height: 27.5px;
         }
+        @media screen and (min-width: 1024px) {
+          font-size: 32px;
+          line-height: 36.67px;
+        }
       }
 
       h3 {
@@ -138,6 +169,10 @@ const InfoContainer = styled.div<{ person: string }>`
         @media screen and (min-width: 768px) {
           font-size: 40px;
           line-height: 45.84px;
+        }
+        @media screen and (min-width: 1200px) {
+          font-size: 56px;
+          line-height: 64.18px;
         }
       }
     }
@@ -163,6 +198,9 @@ const InfoContainer = styled.div<{ person: string }>`
       }
       @media screen and (min-width: 1024px) {
         text-align: left;
+        font-size: 18px;
+        line-height: 32px;
+        max-width: 444px;
       }
     }
   }
@@ -176,13 +214,23 @@ const NavBar = styled.nav<{ person: string }>`
   @media screen and (min-width: 768px) {
     order: 2;
   }
+  @media screen and (min-width: 1024px) {
+    gap: 24px;
+    align-self: flex-start;
+  }
 
   a {
     width: 10px;
     height: 10px;
     background-color: white;
     border-radius: 50%;
+    @media screen and (min-width: 1024px) {
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
   }
+
   // indicates which one is selected,the selected one has opacity 0.5s
   .douglas {
     opacity: ${(props) => (props.person === "douglas" ? "0.5" : "")};

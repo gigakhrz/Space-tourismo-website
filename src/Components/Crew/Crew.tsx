@@ -51,7 +51,7 @@ const CrewContainer = styled.div`
   }
   @media screen and (min-width: 1024px) {
     padding: 40px 0 0 55px;
-    gap: 154px;
+    gap: 0;
     background-image: url(${bgDesktop});
   }
 `;

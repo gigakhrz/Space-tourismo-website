@@ -87,6 +87,7 @@ const DestinationContianer = styled.div`
     padding: 40px 0 0 55px;
     gap: 64px;
     background-image: url(${bgDesktop});
+    margin-left: 126.5px;
   }
 
   .planetImg {
@@ -307,6 +308,8 @@ const PlanetInfo = styled.div`
     }
     @media screen and (min-width: 1024px) {
       text-align: left;
+      font-size: 18px;
+      line-height: 32px;
     }
   }
 `;
