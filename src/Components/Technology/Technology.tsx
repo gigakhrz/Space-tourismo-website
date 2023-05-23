@@ -77,9 +77,11 @@ const HeaderDiv = styled.div`
   padding: 24px 24px 0;
   @media screen and (min-width: 768px) {
     gap: 40px;
+    padding: 0;
   }
   @media screen and (min-width: 1024px) {
     gap: 76px;
+    padding: 40px 0 0 55px;
   }
 
   span {
