@@ -6,14 +6,17 @@ interface techType {
   name: string | undefined;
   photo: string | undefined;
   description: string | undefined;
+  portrait: string | undefined;
 }
 
 const TechnologyInfo = ({
   name,
   photo,
   description,
+  portrait,
 }: techType): JSX.Element => {
   const photoUrl = `.${photo}`;
+  const portraitUrl = `.${portrait}`;
   const [tech, setTech] = useState<string>("vehicle");
   const location = useLocation();
 
@@ -25,7 +28,8 @@ const TechnologyInfo = ({
   }, [location]);
   return (
     <TechContainer>
-      <img src={photoUrl} alt="" />
+      <img className="landscape" src={photoUrl} alt="" />
+      <img className="portrait" src={portraitUrl} alt="" />
 
       <Container>
         <NavBar tech={tech}>
@@ -62,12 +66,29 @@ const TechContainer = styled.div`
   @media screen and (min-width: 768px) {
     gap: 56px;
   }
+  @media screen and (min-width: 1024px) {
+    flex-direction: row-reverse;
+  }
+  @media screen and (min-width: 1024px) {
+    justify-content: space-between;
+  }
 
-  img {
+  .landscape {
     width: 100vw;
     height: 170px;
     @media screen and (min-width: 768px) {
       height: 310px;
+    }
+    @media screen and (min-width: 1024px) {
+      display: none;
+    }
+  }
+  .portrait {
+    display: none;
+    width: 515px;
+    height: 527px;
+    @media screen and (min-width: 1024px) {
+      display: block;
     }
   }
 `;
@@ -82,6 +103,11 @@ const Container = styled.div`
   @media screen and (min-width: 768px) {
     gap: 44px;
   }
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    margin-left: 145px;
+    padding: 0;
+  }
 
   .techDescription {
     display: flex;
@@ -94,6 +120,13 @@ const Container = styled.div`
       flex-direction: column;
       align-items: center;
       gap: 9px;
+      @media screen and (min-width: 768px) {
+        gap: 16px;
+      }
+      @media screen and (min-width: 1024px) {
+        gap: 11px;
+        align-items: flex-start;
+      }
 
       h5 {
         font-family: Barlow Condensed;
@@ -109,10 +142,6 @@ const Container = styled.div`
           line-height: 19.2px;
           letter-spacing: 2.7px;
         }
-        @media screen and (min-width: 1200px) {
-          font-size: 56px;
-          line-height: 64.18px;
-        }
       }
 
       h3 {
@@ -127,9 +156,10 @@ const Container = styled.div`
           font-size: 40px;
           line-height: 45.84px;
         }
-        @media screen and (min-width: 1200px) {
+        @media screen and (min-width: 1024px) {
           font-size: 56px;
           line-height: 64.18px;
+          text-align: left;
         }
       }
     }
@@ -159,6 +189,10 @@ const NavBar = styled.div<{ tech: string }>`
   display: flex;
   align-items: center;
   gap: 16px;
+  @media screen and (min-width: 1024px) {
+    flex-direction: column;
+    gap: 32px;
+  }
   a {
     width: 40px;
     height: 40px;
@@ -181,22 +215,28 @@ const NavBar = styled.div<{ tech: string }>`
     text-align: center;
   }
 
+  a:hover {
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+
   .vehicle {
     background-color: ${(props) => (props.tech === "vehicle" ? "white" : "")};
     color: ${(props) => (props.tech === "vehicle" ? "black" : "white")};
-    border: ${(props) => (props.tech === "vehicle" ? "" : "1px solid #FFFFFF")};
+    border: ${(props) =>
+      props.tech === "vehicle" ? "" : "1px solid rgba(255, 255, 255, 0.25)"};
   }
 
   .spaceport {
     background-color: ${(props) => (props.tech === "spaceport" ? "white" : "")};
     color: ${(props) => (props.tech === "spaceport" ? "black" : "white")};
     border: ${(props) =>
-      props.tech === "spaceport" ? "" : "1px solid #FFFFFF"};
+      props.tech === "spaceport" ? "" : "1px solid rgba(255, 255, 255, 0.25)"};
   }
 
   .capsule {
     background-color: ${(props) => (props.tech === "capsule" ? "white" : "")};
     color: ${(props) => (props.tech === "capsule" ? "black" : "white")};
-    border: ${(props) => (props.tech === "capsule" ? "" : "1px solid #FFFFFF")};
+    border: ${(props) =>
+      props.tech === "capsule" ? "" : "1px solid rgba(255, 255, 255, 0.25)"};
   }
 `;

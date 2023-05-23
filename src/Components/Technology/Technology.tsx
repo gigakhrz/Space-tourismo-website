@@ -39,6 +39,7 @@ const Technology = (): JSX.Element => {
       <TechnologyInfo
         name={personInfo?.name}
         photo={personInfo?.images?.landscape}
+        portrait={personInfo?.images?.portrait}
         description={personInfo?.description}
       />
     </TechnologyCont>
@@ -61,6 +62,9 @@ const TechnologyCont = styled.div`
     gap: 50px;
     background-image: url(${bgTablet});
     padding-bottom: 97px;
+  }
+  @media screen and (min-width: 1024px) {
+    gap: 26px;
   }
 `;
 
