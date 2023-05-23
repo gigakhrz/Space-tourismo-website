@@ -54,15 +54,21 @@ const TechnologyInfo = ({
 export default TechnologyInfo;
 
 const TechContainer = styled.div`
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   gap: 32px;
   align-items: center;
+  @media screen and (min-width: 768px) {
+    gap: 56px;
+  }
 
   img {
-    width: 100%;
+    width: 100vw;
     height: 170px;
+    @media screen and (min-width: 768px) {
+      height: 310px;
+    }
   }
 `;
 
@@ -73,6 +79,9 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   padding: 0 24px;
+  @media screen and (min-width: 768px) {
+    gap: 44px;
+  }
 
   .techDescription {
     display: flex;
@@ -98,7 +107,7 @@ const Container = styled.div`
         @media screen and (min-width: 768px) {
           font-size: 16px;
           line-height: 19.2px;
-          letter-spacing: 2.7pxs;
+          letter-spacing: 2.7px;
         }
         @media screen and (min-width: 1200px) {
           font-size: 56px;
@@ -159,6 +168,10 @@ const NavBar = styled.div<{ tech: string }>`
     text-decoration: none;
     border-radius: 50%;
     cursor: pointer;
+    @media screen and (min-width: 768px) {
+      width: 60px;
+      height: 60px;
+    }
 
     font-family: Bellefair;
     font-size: 16px;

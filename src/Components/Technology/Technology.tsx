@@ -57,6 +57,11 @@ const TechnologyCont = styled.div`
   background-size: cover;
   min-height: 100vh;
   padding-bottom: 56.33px;
+  @media screen and (min-width: 768px) {
+    gap: 50px;
+    background-image: url(${bgTablet});
+    padding-bottom: 97px;
+  }
 `;
 
 const HeaderDiv = styled.div`
@@ -66,10 +71,10 @@ const HeaderDiv = styled.div`
   flex-direction: column;
   gap: 24px;
   padding: 24px 24px 0;
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 768px) {
     gap: 40px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1024px) {
     gap: 76px;
   }
 
