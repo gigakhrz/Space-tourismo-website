@@ -87,7 +87,6 @@ const DestinationContianer = styled.div`
     padding: 40px 0 0 55px;
     gap: 64px;
     background-image: url(${bgDesktop});
-    margin-left: 126.5px;
   }
 
   .planetImg {
@@ -115,6 +114,8 @@ const DestinationContianer = styled.div`
     @media screen and (min-width: 1024px) {
       flex-direction: row;
       gap: 70px;
+      justify-content: space-around;
+      width: 100%;
     }
     @media screen and (min-width: 1440px) {
       flex-direction: row;
