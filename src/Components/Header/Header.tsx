@@ -40,7 +40,7 @@ const Header = (): JSX.Element => {
           <div className="hoverDiv"></div>
           <div className="bottomDiv"></div>
         </Link>
-        <Link to="" className="/technology/vehicle">
+        <Link to="/technology/vehicle" className="technology">
           <h4>03</h4>Technology
           <div className="hoverDiv"></div>
           <div className="bottomDiv"></div>
