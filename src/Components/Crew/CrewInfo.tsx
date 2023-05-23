@@ -27,7 +27,7 @@ const CrewInfo = ({ name, photo, role, bio }: CrewType): JSX.Element => {
         <img src={imgSrc} alt="" />
         <hr />
       </div>
-      <InfoContainer>
+      <InfoContainer person={person}>
         <NavBar person={person}>
           <Link to="/crew/douglas" className="douglas" />
           <Link to="/crew/mark" className="mark" />
@@ -53,15 +53,24 @@ const Container = styled.div`
   flex-direction: column;
   gap: 32px;
   align-items: center;
+  @media screen and (min-width: 768px) {
+    flex-direction: column-reverse;
+  }
 
   .imgContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+
     img {
       width: 177px;
       height: 222px;
+
+      @media screen and (min-width: 768px) {
+        width: 436.37px;
+        height: 542px;
+      }
     }
 
     hr {
@@ -77,17 +86,24 @@ const Container = styled.div`
 `;
 
 //person info and nav bar
-const InfoContainer = styled.div`
+const InfoContainer = styled.div<{ person: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 32px;
+  @media screen and (min-width: 768px) {
+    gap: 40px;
+  }
 
   .personDescription {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    order: 2;
+    @media screen and (min-width: 768px) {
+      order: 1;
+    }
 
     //role and full name
     .personInfo {
@@ -104,6 +120,11 @@ const InfoContainer = styled.div`
         text-align: center;
         color: white;
         opacity: 0.5;
+        text-transform: uppercase;
+        @media screen and (min-width: 768px) {
+          font-size: 24px;
+          line-height: 27.5px;
+        }
       }
 
       h3 {
@@ -113,6 +134,11 @@ const InfoContainer = styled.div`
         line-height: 28px;
         text-align: center;
         color: white;
+        text-transform: uppercase;
+        @media screen and (min-width: 768px) {
+          font-size: 40px;
+          line-height: 45.84px;
+        }
       }
     }
     //description
@@ -124,9 +150,16 @@ const InfoContainer = styled.div`
       color: #d0d6f9;
       text-align: center;
       @media screen and (min-width: 768px) {
-        max-width: 580px;
         font-size: 16px;
         line-height: 28px;
+        max-width: ${(props) =>
+          props.person === "douglas"
+            ? "458px"
+            : props.person === "mark"
+            ? "520px"
+            : props.person === "victor"
+            ? "592px"
+            : "536px"};
       }
       @media screen and (min-width: 1024px) {
         text-align: left;
@@ -139,6 +172,10 @@ const NavBar = styled.nav<{ person: string }>`
   display: flex;
   gap: 16px;
   align-items: center;
+  order: 1;
+  @media screen and (min-width: 768px) {
+    order: 2;
+  }
 
   a {
     width: 10px;

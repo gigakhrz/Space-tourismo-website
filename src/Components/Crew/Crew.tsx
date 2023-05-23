@@ -46,6 +46,7 @@ const CrewContainer = styled.div`
   @media screen and (min-width: 768px) {
     padding: 0;
     background-image: url(${bgTablet});
+    gap: 60px;
   }
 `;
 
@@ -55,6 +56,9 @@ const HeaderDiv = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 24px;
+  @media screen and (min-width: 768px) {
+    gap: 40px;
+  }
 
   span {
     display: flex;
