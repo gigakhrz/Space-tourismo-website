@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Destination from "./Components/Destination";
 import Crew from "./Components/Crew/Crew";
+import Technology from "./Components/Technology/Technology";
 function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="destinations/:planets" element={<Destination />} />
           <Route path="crew/:person" element={<Crew />} />
+          <Route path="technology/:tech" element={<Technology />} />
         </Routes>
       </MainContainer>
     </Router>
