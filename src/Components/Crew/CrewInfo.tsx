@@ -84,8 +84,8 @@ const Container = styled.div`
       }
       @media screen and (min-width: 1200px) {
         width: 548px;
-        height: 712px;
-        margin-top: -33.6px;
+        height: 670px;
+        margin-top: -33px;
       }
     }
 
