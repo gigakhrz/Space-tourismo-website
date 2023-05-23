@@ -65,6 +65,7 @@ const TechnologyCont = styled.div`
   }
   @media screen and (min-width: 1024px) {
     gap: 26px;
+    background-image: url(${bgDesktop});
   }
 `;
 
