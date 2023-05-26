@@ -142,7 +142,7 @@ const NavBar = styled.div<{ pickpage: string }>`
   //on hover indicating hovered tag
 
   .hoverDiv {
-    height: 5px;
+    height: 3px;
     display: none;
     background-color: white;
     @media screen and (min-width: 1024px) {
