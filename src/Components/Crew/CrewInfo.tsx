@@ -19,7 +19,7 @@ const CrewInfo = ({ name, photo, role, bio }: CrewType): JSX.Element => {
     const currentPage = path.split("/")[2]; // Extract the page name from the URL path
 
     setPerson(currentPage);
-  }, [location]);
+  }, [location.pathname]);
 
   return (
     <Container>
