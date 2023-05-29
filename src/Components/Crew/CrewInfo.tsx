@@ -28,12 +28,12 @@ const CrewInfo = ({ name, photo, role, bio }: CrewType): JSX.Element => {
         <hr />
       </div>
       <InfoContainer person={person}>
-        <NavBar person={person}>
+        <nav>
           <Link to="/crew/douglas" className="douglas" />
           <Link to="/crew/mark" className="mark" />
           <Link to="/crew/victor" className="victor" />
           <Link to="/crew/anousheh" className="anousheh" />
-        </NavBar>
+        </nav>
         <div className="personDescription">
           <div className="personInfo">
             <h5>{role}</h5>
@@ -112,6 +112,52 @@ const InfoContainer = styled.div<{ person: string }>`
   }
   @media screen and (min-width: 1024px) {
     gap: 120px;
+  }
+  nav {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    order: 1;
+    @media screen and (min-width: 768px) {
+      order: 2;
+    }
+    @media screen and (min-width: 1024px) {
+      gap: 24px;
+      align-self: flex-start;
+    }
+
+    a {
+      width: 10px;
+      height: 10px;
+      background-color: white;
+      border-radius: 50%;
+      @media screen and (min-width: 1024px) {
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+      }
+    }
+
+    a:hover {
+      opacity: 0.51;
+    }
+
+    // indicates which one is selected,the selected one has opacity 0.5s
+    .douglas {
+      opacity: ${(props) => (props.person === "douglas" ? "" : "0.17")};
+    }
+
+    .mark {
+      opacity: ${(props) => (props.person === "mark" ? "" : "0.17")};
+    }
+
+    .victor {
+      opacity: ${(props) => (props.person === "victor" ? "" : "0.17")};
+    }
+
+    .anousheh {
+      opacity: ${(props) => (props.person === "anousheh" ? "" : "0.17")};
+    }
   }
 
   .personDescription {
@@ -203,52 +249,5 @@ const InfoContainer = styled.div<{ person: string }>`
         max-width: 444px;
       }
     }
-  }
-`;
-//nav bar which is in InfoConateier
-const NavBar = styled.nav<{ person: string }>`
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  order: 1;
-  @media screen and (min-width: 768px) {
-    order: 2;
-  }
-  @media screen and (min-width: 1024px) {
-    gap: 24px;
-    align-self: flex-start;
-  }
-
-  a {
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    border-radius: 50%;
-    @media screen and (min-width: 1024px) {
-      width: 15px;
-      height: 15px;
-      cursor: pointer;
-    }
-  }
-
-  a:hover {
-    opacity: 0.51;
-  }
-
-  // indicates which one is selected,the selected one has opacity 0.5s
-  .douglas {
-    opacity: ${(props) => (props.person === "douglas" ? "" : "0.17")};
-  }
-
-  .mark {
-    opacity: ${(props) => (props.person === "mark" ? "" : "0.17")};
-  }
-
-  .victor {
-    opacity: ${(props) => (props.person === "victor" ? "" : "0.17")};
-  }
-
-  .anousheh {
-    opacity: ${(props) => (props.person === "anousheh" ? "" : "0.17")};
   }
 `;
